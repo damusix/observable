@@ -12,7 +12,7 @@ build:
 	@ mkdir -p dist
 	# umd
 	@ cat lib/wrap/start.frag lib/index.js lib/wrap/end.frag | \
-	  sed '/export\sdefault/d' | \
+	  sed 's/export default //' | \
 	  sed '/sourceMappingURL/d' | \
 	  tee dist/observable.js 1> /dev/null
 	# es6

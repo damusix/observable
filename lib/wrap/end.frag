@@ -1,10 +1,10 @@
   /* istanbul ignore next */
   // support CommonJS, AMD & browser
   if (typeof exports === 'object')
-    module.exports = observable
+    module.exports = Observable
   else if (typeof define === 'function' && define.amd)
-    define(function() { return observable })
+    define(function() { return Observable })
   else
-    window.observable = observable
+    window.Observable = Observable
 
 })(typeof window != 'undefined' ? window : undefined);

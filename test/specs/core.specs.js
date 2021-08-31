@@ -1,4 +1,3 @@
-/* eslint-disable fp/no-let, fp/no-delete, fp/no-arguments, prefer-rest-params */
 /*
  * Equivalent to Object.propertyIsEnumerable
  */
@@ -7,14 +6,16 @@ function hasEnumerableProperty(object, key) {
 }
 
 describe('Core specs', function() {
-  const el = observable()
+  const el = new Observable()
   let counter = 0
+
 
   beforeEach(function() {
     counter = 0
   })
 
   afterEach(function() {
+
     el.off('*')
   })
 
@@ -332,10 +333,10 @@ describe('Core specs', function() {
 
   it('Do not block callback throwing errors', function() {
 
-    el.on('event', function() { counter++; throw 'OH NOES!' })
+    el.on('event', function() { counter++; ;throw 'OH NOES!' })
     el.on('event', function() { counter++ })
 
-    expect(el.trigger).withArgs('event').to.throwException()
+    expect(() => el.trigger('event')).to.throwException()
     expect(counter).to.be(1)
 
   })
